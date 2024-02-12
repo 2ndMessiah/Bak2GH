@@ -3,7 +3,7 @@ import subprocess
 # 定义需要压缩的目录和输出文件的名称
 input_dir = "/root"
 output_file = "/home/root.tar.gz"
-backup_dir = "/home/bakreponame"
+backup_dir = "/home/-bak" #backup repo name
 
 # 使用tar命令创建压缩文件
 tar_command = f"tar -czf {output_file} -C {input_dir} ."
