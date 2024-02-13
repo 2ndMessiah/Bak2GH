@@ -37,7 +37,7 @@ if rm_process.returncode != 0:
     exit(1)
 
 # 移动分割后的文件到备份目录
-mv_command = f"mv {output_file}.part* {backup_dir}"
+mv_command = f"mv {output_file}.part* {backup_dir} && crontab-l > {backup_dir}/crontab.bak"
 mv_process = subprocess.Popen(mv_command, shell=True)
 mv_process.wait()
 
