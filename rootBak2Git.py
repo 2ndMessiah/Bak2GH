@@ -66,7 +66,8 @@ gitcmd0=f"git checkout --orphan backtemp && \
         git branch -D master && \
         git branch -m master && \
         git push -f origin master && \
-        rm -rf {backup_dir}/.git/objects/*"
+        rm -rf {backup_dir}/.git/objects/* && \
+        rm {backup_dir}/*"
 git_process = subprocess.Popen(gitcmd0,shell=True,cwd=backup_dir)
 git_process.wait()
 
