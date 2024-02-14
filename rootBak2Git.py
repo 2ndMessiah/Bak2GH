@@ -37,7 +37,9 @@ if rm_process.returncode != 0:
     exit(1)
 
 # 移动分割后的文件到备份目录
-mv_command = f"mv {output_file}.part* {backup_dir} && crontab -l > {backup_dir}/crontab.bak"
+mv_command = f"mv {output_file}.part* {backup_dir} && \
+                 crontab -l > {backup_dir}/crontab.bak && \
+                 rm -rf {backup_dir}/.git/objects/* "
 mv_process = subprocess.Popen(mv_command, shell=True)
 mv_process.wait()
 
@@ -49,7 +51,8 @@ if mv_process.returncode != 0:
 print("Compression, split, clear directory, and move completed successfully.")
 
 
-gitcmd0="git checkout --orphan backtemp && \
+gitcmd0="git pull && \
+        git checkout --orphan backtemp && \
         git add -A && \
         git commit -am 'bak' && \
         git branch -D master && \
