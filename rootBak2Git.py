@@ -14,8 +14,8 @@ cleanup_process.wait()
 
 # 确保命令成功执行
 if cleanup_process.returncode != 0:
-    print(f"cleanup failed with exit code {cleanup_process.returncode}")
-    exit(1)
+    print(f"cleanup message: \n {cleanup_process.returncode}")
+    # exit(1)
 
 
 # 使用tar命令创建压缩文件
