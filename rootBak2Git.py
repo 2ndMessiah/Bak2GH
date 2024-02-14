@@ -6,9 +6,7 @@ output_file = "/home/root.tar.gz"
 backup_dir = "/home/-bak" #backup repo name
 
 # 清理.git/objects
-cleanup_command = f"rm -rf {backup_dir}/.git/objects/* && \
-                    cd {backup_dir} && \
-                    git pull"
+cleanup_command = f"cd {backup_dir} && git pull"
 cleanup_process = subprocess.Popen(cleanup_command, shell=True)
 cleanup_process.wait()
 
@@ -67,7 +65,8 @@ gitcmd0="git checkout --orphan backtemp && \
         git commit -am 'bak' && \
         git branch -D master && \
         git branch -m master && \
-        git push -f origin master"
+        git push -f origin master && \
+        rm -rf {backup_dir}/.git/objects/*"
 git_process = subprocess.Popen(gitcmd0,shell=True,cwd=backup_dir)
 git_process.wait()
 
