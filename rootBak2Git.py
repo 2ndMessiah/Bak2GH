@@ -60,7 +60,7 @@ if mv_process.returncode != 0:
 print("Compression, split, clear directory, and move completed successfully.")
 
 
-gitcmd0="git checkout --orphan backtemp && \
+gitcmd0=f"git checkout --orphan backtemp && \
         git add -A && \
         git commit -am 'bak' && \
         git branch -D master && \
