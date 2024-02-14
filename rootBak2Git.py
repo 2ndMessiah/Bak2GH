@@ -5,6 +5,19 @@ input_dir = "/root"
 output_file = "/home/root.tar.gz"
 backup_dir = "/home/-bak" #backup repo name
 
+# 清理.git/objects
+cleanup_command = f"rm -rf {backup_dir}/.git/objects/* && \
+                    cd {backup_dir} && \
+                    git pull"
+cleanup_process = subprocess.Popen(cleanup_command, shell=True)
+cleanup_process.wait()
+
+# 确保命令成功执行
+if cleanup_process.returncode != 0:
+    print(f"cleanup failed with exit code {cleanup_process.returncode}")
+    exit(1)
+
+
 # 使用tar命令创建压缩文件
 tar_command = f"tar -czf {output_file} -C {input_dir} ."
 tar_process = subprocess.Popen(tar_command, shell=True)
