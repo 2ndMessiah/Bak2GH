@@ -13,5 +13,5 @@ Please pay attention to the following points:
 3. Modify the `input_dir` variable in the script according to your requirements, indicating the folder that needs to be backed up.
 4. The `outputfile` variable refers to the resulting tarball backup file.
     1. To overcome GitHub's 100MB file size restriction, the resulting tarball will be split into chunks of approximately 90MB each before uploading.
-5. If your system's got a very terrible network so that git push fails, try: 'git config --global http.postBuffer 524288000'
+5. If your system's got a very terrible network so that git push fails, try: `git config --global http.postBuffer 524288000`
 
