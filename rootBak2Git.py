@@ -1,9 +1,10 @@
 import subprocess
 
 # 定义需要压缩的目录和输出文件的名称
-input_dir = "/root"
-output_file = "/home/root.tar.gz"
-backup_dir = "/home/-bak" #backup repo name
+input_dir = "/mnt/mmcblk2p4"
+output_file = "/mnt/mmcblk2p4/bak/root.tar.gz"
+backup_dir = "/mnt/mmcblk2p4/bak/313bak" #backup repo name
+excepList="/mnt/mmcblk2p4/bak/exception.txt"
 
 # 清理.git/objects
 cleanup_command = f"cd {backup_dir} && git pull"
@@ -16,8 +17,10 @@ if cleanup_process.returncode != 0:
     # exit(1)
 
 
+
+
 # 使用tar命令创建压缩文件
-tar_command = f"tar -czf {output_file} -C {input_dir} ."
+tar_command = f"tar -czf {output_file} -X {excepList} {input_dir}"
 tar_process = subprocess.Popen(tar_command, shell=True)
 tar_process.wait()
 

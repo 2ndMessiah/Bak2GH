@@ -1,0 +1,4 @@
+/mnt/mmcblk2p4/docker
+/mnt/mmcblk2p4/tdl/downloads
+/mnt/mmcblk2p4/bak
+/mnt/mmcblk2p4/ff/appdata
