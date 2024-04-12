@@ -1,10 +1,10 @@
 import subprocess
 
 # 定义需要压缩的目录和输出文件的名称
-input_dir = "/mnt/mmcblk2p4"
-output_file = "/mnt/mmcblk2p4/bak/root.tar.gz"
-backup_dir = "/mnt/mmcblk2p4/bak/313bak" #backup repo name
-excepList="/mnt/mmcblk2p4/bak/exception.txt"
+input_dir = "/root"
+output_file = "/home/root.tar.gz"
+backup_dir = "/home/-bak" #backup repo name
+excepList="/root/exception.txt"
 
 # 清理.git/objects
 cleanup_command = f"cd {backup_dir} && git pull"
